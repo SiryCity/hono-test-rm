@@ -10,10 +10,13 @@ jobs:
       # 標準機能
       - uses: actions/checkout@v4
 
-      # Protoをアクティベート
-      - uses: moonrepo/setup-toolchain@v0
-        with:
-          auto-install: true
+      # # Protoをアクティベート
+      # - uses: moonrepo/setup-toolchain@v0
+      #   with:
+      #     auto-install: true
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
 
       # ライブラリのキャッシュ
       - uses: actions/cache@v3
