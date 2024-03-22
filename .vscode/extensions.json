@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "mikestead.dotenv",
+    "bradlc.vscode-tailwindcss",
+    "pkief.material-icon-theme"
+  ]
+}

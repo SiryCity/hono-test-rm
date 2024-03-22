@@ -32,14 +32,10 @@ jobs:
       - name: Build
         run: bun run build
 
+      # デプロイ
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: pages deploy ./dist --project-name=hono-test-rm
-          
-      - name: print wrangler command output
-        env:
-          CMD_OUTPUT: ${{ steps.deploy.outputs.command-output }}
-        run: echo $CMD_OUTPUT
