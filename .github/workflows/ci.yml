@@ -37,6 +37,7 @@ jobs:
         with:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: pages deploy ./dist
           
       - name: print wrangler command output
         env:
