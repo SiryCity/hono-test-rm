@@ -6,11 +6,11 @@ import { defineConfig } from 'vite'
 export default defineConfig(({ mode }) => {
   if (mode === 'client') {
     return {
-      plugins: [client()]
+      plugins: [client()],
     }
   } else {
     return {
-      plugins: [honox(), pages()]
+      plugins: [honox(), pages()],
     }
   }
 })
