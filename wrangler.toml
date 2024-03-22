@@ -1,6 +1,6 @@
 name = "hono-test-rm"
 compatibility_date = "2023-12-01"
-main = "./dist"
+main = "./dist/_worker.js"
 
 # [vars]
 # MY_VAR = "my-variable"
