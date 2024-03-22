@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --mode client && vite build",
+    "lint:js": "eslint '**/*.{js,jsx,ts,tsx}' --ignore-path .gitignore",
     "format": "prettier '**/*' --write --ignore-unknown --ignore-path .gitignore"
   },
   "dependencies": {
@@ -12,6 +13,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240208.0",
+    "@hono/eslint-config": "^0.0.4",
     "@hono/vite-cloudflare-pages": "^0.2.4",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "prettier": "^3.2.5",

@@ -1,6 +1,6 @@
-import Counter from '../islands/counter'
 import { css } from 'hono/css'
 import { createRoute } from 'honox/factory'
+import Counter from '../islands/counter'
 
 const className = css`
   font-family: sans-serif;
