@@ -1,5 +1,6 @@
 name = "hono-test-rm"
 compatibility_date = "2023-12-01"
+main = "./dist"
 
 # [vars]
 # MY_VAR = "my-variable"
