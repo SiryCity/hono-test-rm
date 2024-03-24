@@ -4,7 +4,7 @@ export default {
   semi: false,
   singleQuote: true,
   arrowParens: 'avoid',
-  importOrder: ['honox/factory', '^[./]'],
+  importOrder: ['^[./]', '~'],
   plugins: [
     '@trivago/prettier-plugin-sort-imports',
     'prettier-plugin-tailwindcss',

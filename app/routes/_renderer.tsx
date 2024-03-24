@@ -3,7 +3,7 @@ import { jsxRenderer } from 'hono/jsx-renderer'
 import { Script } from 'honox/server'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-import styles from '../style.css?url'
+import styles from '~/style.css?url'
 
 export default jsxRenderer(({ children, title }) => {
   return (
