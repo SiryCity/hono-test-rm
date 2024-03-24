@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       plugins: [client()],
       resolve: { alias: { '~/': __dirname + '/app/' } },
       define: {
-        FOO: process.env.FOO,
+        VITE_FOO: process.env.VITE_FOO,
       },
     }
   } else {
@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
       plugins: [honox(), pages()],
       resolve: { alias: { '~/': __dirname + '/app/' } },
       define: {
-        FOO: process.env.FOO,
+        VITE_FOO: process.env.VITE_FOO,
       },
       build: {
         assetsDir: 'static',

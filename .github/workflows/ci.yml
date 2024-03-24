@@ -31,7 +31,7 @@ jobs:
       # 環境変数の設定
       - name: Set env
         run: |
-          echo FOO=${{ secrets.FOO }} >> .env
+          echo VITE_FOO=${{ secrets.VITE_FOO }} >> .env
 
       # ビルド
       - name: Build
