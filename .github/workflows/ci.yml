@@ -32,7 +32,7 @@ jobs:
       - name: Set env
         run: |
           echo name=\"hono-test-rm\" >> wrangler.toml
-          echo \[vars\] >> wrangler.toml
+          echo \[env.vars\] >> wrangler.toml
           echo FOO=${{ secrets.FOO }} >> wrangler.toml
 
       # ビルド
