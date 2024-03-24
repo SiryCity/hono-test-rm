@@ -5,3 +5,5 @@ dist
 .hono
 
 .env
+
+.DS_Store
