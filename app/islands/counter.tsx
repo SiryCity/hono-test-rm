@@ -6,6 +6,7 @@ export default function Counter() {
     <div>
       <p>{count}</p>
       <button onClick={() => setCount(count + 2)}>Increment</button>
+      <div class="bg-blue-300">{typeof window}</div>
     </div>
   )
 }
