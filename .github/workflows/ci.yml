@@ -31,6 +31,7 @@ jobs:
       # 環境変数の設定
       - name: Set env
         run: |
+          echo name=hono-test-rm >> wrangler.toml
           echo \[env\] >> wrangler.toml
           echo FOO=${{ secrets.FOO }} >> wrangler.toml
 
@@ -45,7 +46,7 @@ jobs:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./dist --project-name=hono-test-rm --name=hono-test-rm
+          command: pages deploy ./dist --project-name=hono-test-rm
           secrets: |
             FOO
         env:
