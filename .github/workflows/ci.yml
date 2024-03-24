@@ -49,5 +49,7 @@ jobs:
           command: pages deploy ./dist --project-name=hono-test-rm
           secrets: |
             FOO
+            BAR
         env:
           FOO: ${{ secrets.FOO }}
+          BAR: 42
