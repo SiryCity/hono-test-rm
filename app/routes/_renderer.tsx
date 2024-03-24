@@ -15,6 +15,7 @@ export default jsxRenderer(({ children, title }) => (
       <Script src="/app/client.ts" async />
       <Style />
     </head>
+
     <body>{children}</body>
   </html>
 ))

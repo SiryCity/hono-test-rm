@@ -10,6 +10,7 @@ export default createRoute(c => {
       <Counter />
       <div class="bg-green-300">{typeof window}</div>
       <div class="bg-pink-300">{String(new Date())}</div>
+      <div class="bg-yellow-300">{process.env.FOO}</div>
     </div>,
 
     { title: name },

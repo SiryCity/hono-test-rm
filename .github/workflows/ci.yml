@@ -28,6 +28,11 @@ jobs:
         if: steps.bun-cache.outputs.cache-hit != 'true'
         run: bun install --no-save
 
+      # 環境変数の設定
+      - name: Set env
+        run: |
+          echo FOO=${{ secrets.FOO }} >> .env
+
       # ビルド
       - name: Build
         run: bun run build

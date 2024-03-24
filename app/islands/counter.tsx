@@ -8,6 +8,7 @@ export const Counter = () => {
       <p>{count}</p>
       <button onClick={() => setCount(count + 2)}>Increment</button>
       <div class="bg-blue-300">{typeof window}</div>
+      <div class="bg-yellow-300">{process.env.FOO}</div>
     </div>
   )
 }
