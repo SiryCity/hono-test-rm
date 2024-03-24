@@ -47,5 +47,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: |
-            --help
+            secret put FOO --env-value="444"
             pages deploy ./dist --project-name=hono-test-rm
