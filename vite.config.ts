@@ -1,9 +1,12 @@
 import pages from '@hono/vite-cloudflare-pages'
 import honox from 'honox/vite'
 import client from 'honox/vite/client'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
+  const env = { ...process.env, ...loadEnv(mode, process.cwd()) }
+  console.log({ env })
+
   if (mode === 'client') {
     return {
       plugins: [client()],

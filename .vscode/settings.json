@@ -15,8 +15,8 @@
   "files.exclude": {
     "**/node_modules": true,
     "**/tsconfig.tsbuildinfo": true,
-    "**/vite.config.ts.timestamp*": true,
-    "**/dist": true
+    "**/vite.config.ts.timestamp*": true
+    // "**/dist": true
   },
   "search.exclude": { "**/bun.lockb": true },
   "stylelint.enable": true,
