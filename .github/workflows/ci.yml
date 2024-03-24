@@ -44,7 +44,8 @@ jobs:
         with:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy ./dist --project-name=hono-test-rm
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ./dist --project-name=hono-test-rm --name hono-test-rm
           secrets: |
             FOO
         env:
