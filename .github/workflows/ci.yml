@@ -46,6 +46,7 @@ jobs:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          preCommands: |
+            echo "444" | wrangler secret put FOO
           command: |
-            echo "444" | secret put FOO
             pages deploy ./dist --project-name=hono-test-rm
