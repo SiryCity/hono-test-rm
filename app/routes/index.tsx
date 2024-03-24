@@ -13,6 +13,7 @@ export default createRoute(c => {
       <h1 class="text-red-600">Hello, {name}!!</h1>
       <Counter />
       <div class="bg-green-300">{typeof window}</div>
+      <div class="bg-pink-300">{String(new Date())}</div>
     </div>,
     { title: name },
   )
