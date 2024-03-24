@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "open 'http://localhost:5173' && vite",
     "build": "vite build --mode client && vite build",
     "lint:js": "eslint '**/*.{js,jsx,ts,tsx}' --ignore-path .gitignore",
     "format": "prettier '**/*' --write --ignore-unknown --ignore-path .gitignore"
