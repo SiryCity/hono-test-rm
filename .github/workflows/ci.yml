@@ -28,14 +28,16 @@ jobs:
         if: steps.bun-cache.outputs.cache-hit != 'true'
         run: bun install --no-save
 
-      # 環境変数の設定
-      - name: Set env
-        run: |
-          echo VITE_FOO=${{ secrets.VITE_FOO }} >> .env
-
       # ビルド
       - name: Build
         run: bun run build
+
+      # 環境変数の設定
+      - name: Set env
+        run: |
+          echo \[env.vars\] >> wrangler.toml
+          echo VITE_FOO=${{ secrets.VITE_FOO }} >> wrangler.toml
+          mv wrangler.toml dist/wrangler.toml
 
       # デプロイ
       - name: Deploy
