@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
       define: {
         FOO: `"${process.env.FOO}"`,
       },
-      plugins: [ViteToml(), client()],
+      plugins: [client()],
       resolve: { alias: { '~/': __dirname + '/app/' } },
     }
   } else {
