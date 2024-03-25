@@ -1,19 +1,17 @@
-import { createRoute } from 'honox/factory'
+import type { FC } from 'hono/jsx'
 import env from '~/../.env.toml'
 import { Counter } from '~/islands/counter'
 
-export default createRoute(c => {
-  const name = c.req.query('name') ?? 'Hono'
+const route: FC = () => (
+  <div>
+    <h1 class="text-red-600">Hello, Honox!!</h1>
+    <Counter FOO={env.FOO} />
+    <div class="bg-green-300">{typeof window}</div>
+    <div class="bg-pink-300">{String(new Date())}</div>
+    <div class="bg-yellow-300">dotenvの環境変数server: {env.FOO}</div>
+  </div>
+)
 
-  return c.render(
-    <div>
-      <h1 class="text-red-600">Hello, {name}!!</h1>
-      <Counter />
-      <div class="bg-green-300">{typeof window}</div>
-      <div class="bg-pink-300">{String(new Date())}</div>
-      <div class="bg-yellow-300">dotenvの環境変数server: {env.FOO}</div>
-    </div>,
+export default route
 
-    { title: name },
-  )
-})
+export const title = 'Honox'
