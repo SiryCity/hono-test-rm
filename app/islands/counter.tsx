@@ -1,7 +1,7 @@
 import type { FC } from 'hono/jsx'
 import { useState } from 'hono/jsx'
 
-export const Counter: FC<{ FOO: string }> = ({ FOO }) => {
+export const Counter: FC<{ FOO?: string }> = ({ FOO = 0 }) => {
   const [count, setCount] = useState(0)
 
   return (

@@ -5,7 +5,7 @@ import { Counter } from '~/islands/counter'
 const route: FC = () => (
   <div>
     <h1 class="text-red-600">Hello, Honox!!</h1>
-    <Counter FOO={env.FOO} />
+    <Counter />
     <div class="bg-green-300">{typeof window}</div>
     <div class="bg-pink-300">{String(new Date())}</div>
     <div class="bg-yellow-300">dotenvの環境変数server: {env.FOO}</div>
