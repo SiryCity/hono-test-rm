@@ -48,4 +48,4 @@ jobs:
         with:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy ./dist
+          command: pages deploy ./dist --env=preview
