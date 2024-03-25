@@ -35,9 +35,7 @@ jobs:
       # 環境変数の設定
       - name: Set env
         run: |
-          echo \[env.vars\] >> wrangler.toml
-          echo VITE_FOO=${{ secrets.VITE_FOO }} >> wrangler.toml
-          mv wrangler.toml dist/wrangler.toml
+          echo test
 
       # デプロイ
       - name: Deploy
@@ -45,8 +43,4 @@ jobs:
         with:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: |
-            pages deploy ./dist --project-name=hono-test-rm
-          postCommands: |
-            wrangler secret put FOO --name hono-test-rm
+          command: pages deploy ./dist --project-name=hono-test-rm
