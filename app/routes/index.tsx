@@ -1,5 +1,6 @@
 import type { FC } from 'hono/jsx'
 import env from '~/../.env.toml'
+import testImg3 from '~/../public/ogp.jpg'
 import testImg2 from '~/../static/ogp.jpg'
 import testImg1 from '~/images/test.jpg'
 import { Counter } from '~/islands/counter'
@@ -14,6 +15,7 @@ const route: FC = () => (
 
     <img src={testImg1} alt="" />
     <img src={testImg2} alt="" />
+    <img src={testImg3} alt="" />
   </div>
 )
 
