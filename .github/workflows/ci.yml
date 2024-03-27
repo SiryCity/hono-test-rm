@@ -39,7 +39,9 @@ jobs:
 
       # ビルド
       - name: Build
-        run: bun run build
+        run: |
+          cat ./node_modules/@hono/vite-cloudflare-pages/dist/entry.js
+          bun run build
 
       # デプロイ
       - name: Deploy
@@ -47,4 +49,4 @@ jobs:
         with:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy ./dist --node-compat --env=preview
+          command: pages deploy ./dist --env=preview
