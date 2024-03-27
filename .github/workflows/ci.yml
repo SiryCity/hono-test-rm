@@ -35,7 +35,7 @@ jobs:
         run: |
           echo FOO=${{ secrets.FOO }} >> .env.toml
           echo BAR=${{ secrets.BAR }} >> .env.toml
-          echo URL_PROD=${{ secrets.URL_PROD }} >> .env.toml
+          echo URL_PROD="${{ secrets.URL_PROD }}" >> .env.toml
 
       # ビルド
       - name: Build
