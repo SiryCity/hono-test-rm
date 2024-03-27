@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
     return {
       plugins: [ViteToml(), honox(), pages()],
       resolve: { alias: { '~/': __dirname + '/app/' } },
-      build: { assetsDir: 'static', ssrEmitAssets: true },
+      build: { assetsDir: 'static', ssrEmitAssets: true, assetsInlineLimit: 0 },
     }
   }
 })
