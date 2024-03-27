@@ -1,5 +1,6 @@
 import type { FC } from 'hono/jsx'
 import env from '~/../.env.toml'
+import testImg from '~/images/test.jpg'
 import { Counter } from '~/islands/counter'
 
 const route: FC = () => (
@@ -9,6 +10,8 @@ const route: FC = () => (
     <div class="bg-green-300">{typeof window}</div>
     <div class="bg-pink-300">{String(new Date())}</div>
     <div class="bg-yellow-300">dotenvの環境変数server: {env.FOO}</div>
+
+    <img src={testImg} alt="" />
   </div>
 )
 

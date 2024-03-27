@@ -14,6 +14,7 @@ export default jsxRenderer(({ children, title }) => (
       <link href={styles} rel="stylesheet" />
       <Script src="/app/client.ts" async />
       <Style />
+
       <meta name="robots" content="noindex" />
     </head>
 
