@@ -47,4 +47,4 @@ jobs:
         with:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy ./dist --compatibility-flags="nodejs_compat" --env=preview
+          command: pages deploy ./dist --node-compat --env=preview
