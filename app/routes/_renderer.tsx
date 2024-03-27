@@ -17,7 +17,10 @@ export default jsxRenderer(({ children, title }) => (
       <Script src="/app/client.ts" async />
       <Style />
 
-      <meta property="og:image" content={env.URL_PROD + testImg} />
+      <meta
+        property="og:image"
+        content={env.URL_PROD + '/opengraph-image.jpg'}
+      />
       <meta name="robots" content="noindex" />
     </head>
 
