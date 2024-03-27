@@ -12,6 +12,14 @@ const route: FC = () => (
     <div class="bg-yellow-300">dotenvの環境変数server: {env.FOO}</div>
     images
     <img src={testImg} alt="" />
+    <div class="flex flex-col gap-4">
+      <a href="test">test</a>
+      <a href="test/">test/</a>
+      <a href="test/index.html">test/index.html</a>
+      <a href="/test">/test</a>
+      <a href="/test/">/test/</a>
+      <a href="/test/index.html">/test/index.html</a>
+    </div>
   </div>
 )
 
