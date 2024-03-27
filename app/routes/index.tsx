@@ -14,11 +14,14 @@ const route: FC = () => (
     <img src={testImg} alt="" />
     <div class="flex flex-col gap-4">
       <a href="test">test</a>
-      <a href="test/">test/</a>
-      <a href="test/index.html">test/index.html</a>
+      {/* <a href="test/">test/</a> */}
+      {/* <a href="test/index.html">test/index.html</a> */}
       <a href="/test">/test</a>
-      <a href="/test/">/test/</a>
-      <a href="/test/index.html">/test/index.html</a>
+      {/* <a href="/test/">/test/</a> */}
+      {/* <a href="/test/index.html">/test/index.html</a> */}
+      <a href="./test">./test</a>
+      {/* <a href="./test/">./test/</a> */}
+      {/* <a href="./test/index.html">./test/index.html</a> */}
     </div>
   </div>
 )
