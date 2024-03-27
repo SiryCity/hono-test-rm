@@ -1,6 +1,7 @@
 import { Style } from 'hono/css'
 import { jsxRenderer } from 'hono/jsx-renderer'
 import { Script } from 'honox/server'
+import env from '~/../.env.toml'
 import testImg from '~/images/ogp.jpg'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -16,7 +17,7 @@ export default jsxRenderer(({ children, title }) => (
       <Script src="/app/client.ts" async />
       <Style />
 
-      <meta property="og:image" content={testImg} />
+      <meta property="og:image" content={env.URL_PROD + testImg} />
       <meta name="robots" content="noindex" />
     </head>
 

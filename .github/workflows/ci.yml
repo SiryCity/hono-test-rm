@@ -33,14 +33,13 @@ jobs:
       # 環境変数の設定
       - name: Set env
         run: |
-          echo FOO=${{ secrets.FOO }} >> .env
-          echo BAR=${{ secrets.BAR }} >> .env
+          echo FOO=${{ secrets.FOO }} >> .env.toml
+          echo BAR=${{ secrets.BAR }} >> .env.toml
+          echo URL_PROD=${{ secrets.URL_PROD }} >> .env.toml
 
       # ビルド
       - name: Build
-        run: |
-          mv .env .env.toml
-          bun run build
+        run: bun run build
 
       # デプロイ
       - name: Deploy
