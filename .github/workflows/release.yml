@@ -1,0 +1,18 @@
+on:
+  push:
+    tags: [v*]
+
+jobs:
+  main:
+    runs-on: ubuntu-22.04
+
+    steps:
+      # 標準機能
+      - uses: actions/checkout@v4
+
+      # 自動リリース
+      - uses: 'marvinpinto/action-automatic-releases@latest'
+        if: env.IS_PROD == 'true'
+        with:
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          prerelease: false

@@ -3,7 +3,6 @@ on:
     branches: [main]
   push:
     branches: [main]
-    tags: [v*]
 
 jobs:
   main:
@@ -11,8 +10,7 @@ jobs:
 
     env:
       IS_TEST: ${{ startsWith(github.ref, 'refs/pull') }}
-      IS_STG: ${{ startsWith(github.ref, 'refs/heads/main') }}
-      IS_PROD: ${{ startsWith(github.ref, 'refs/tags/v') }}
+      IS_PROD: ${{ startsWith(github.ref, 'refs/heads/main') }}
       DISCORD_INCOMING_WEBHOOK: ${{ secrets.DISCORD_INCOMING_WEBHOOK }}
 
     steps:
@@ -41,17 +39,11 @@ jobs:
       - name: Set env
         run: |
           echo URL_PROD=\'${{ secrets.URL_PROD }}\' >> .env.toml
-          echo "URL_ORIGIN=${{ secrets.URL_PROD }}" >> $GITHUB_ENV
       - name: Set TEST env
         if: env.IS_TEST == 'true'
         run: |
           echo ENVIRONMENT=\'TEST\' >> .env.toml
           echo "DISCORD_PREFIX=🧪 Updated TEST env: " >> $GITHUB_ENV
-      - name: Set STG env
-        if: env.IS_STG == 'true'
-        run: |
-          echo ENVIRONMENT=\'STG\' >> .env.toml
-          echo "DISCORD_PREFIX=🌏 Updated STG env: " >> $GITHUB_ENV
       - name: Set PROD env
         if: env.IS_PROD == 'true'
         run: |
@@ -81,10 +73,3 @@ jobs:
           curl -H 'Content-Type:application/json' -d "{\"content\": \"$DISCORD_PREFIX $DEPLOYMENT_URL\"}" $DISCORD_INCOMING_WEBHOOK
         env:
           DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
-
-      # 自動リリース
-      - uses: 'marvinpinto/action-automatic-releases@latest'
-        if: env.IS_PROD == 'true'
-        with:
-          repo_token: '${{ secrets.GITHUB_TOKEN }}'
-          prerelease: false
