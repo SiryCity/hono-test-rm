@@ -75,7 +75,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: |
             pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true
-            pages deployment list
+            pages deployment tail
 
       # Discordに通知
       - name: Notify Discord
