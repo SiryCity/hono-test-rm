@@ -65,7 +65,7 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true
+          command: pages deploy ./dist --branch="${{ github.head_ref }}" --commit-message="${{ github.event.head_commit.message }}" --commit-dirty=true
 
       # Discordに通知
       - name: Notify Discord
