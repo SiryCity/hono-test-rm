@@ -69,7 +69,6 @@ jobs:
 
       # デプロイ
       - name: Deploy
-        if: env.IS_TEST == 'true' || env.IS_PROD == 'true'
         id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
@@ -78,7 +77,6 @@ jobs:
 
       # Discordに通知
       - name: Notify Discord
-        if: env.IS_TEST == 'true' || env.IS_PROD == 'true'
         run: |
           curl -H 'Content-Type:application/json' -d "{\"content\": \"$DISCORD_PREFIX $DEPLOYMENT_URL\"}" $DISCORD_INCOMING_WEBHOOK
         env:
