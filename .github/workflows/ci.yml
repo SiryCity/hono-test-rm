@@ -62,7 +62,7 @@ jobs:
       # ビルド直前にライブラリの直接上書きによるOGPの設定変更
       - name: Build
         run: |
-          cat .env.toml
+          echo ${{ github.ref##*/ }}
           sed -i '32a worker.get("/opengraph-image.jpg",serveStatic())' node_modules/@hono/vite-cloudflare-pages/dist/entry.js
           sed -i '32a worker.get("/favicon.svg",serveStatic())' node_modules/@hono/vite-cloudflare-pages/dist/entry.js
           sed -i '32a worker.get("/apple-touch-icon.png",serveStatic())' node_modules/@hono/vite-cloudflare-pages/dist/entry.js
