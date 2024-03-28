@@ -40,7 +40,7 @@ jobs:
       # 環境変数の設定
       - name: Set env
         run: |
-          echo URL_PROD=\"${{ secrets.URL_PROD }}\" >> .env.toml
+          echo URL_PROD='${{ secrets.URL_PROD }}' >> .env.toml
           echo "URL_ORIGIN=${{ secrets.URL_PROD }}" >> $GITHUB_ENV
       - name: Set TEST env
         if: env.IS_TEST == 'true'
