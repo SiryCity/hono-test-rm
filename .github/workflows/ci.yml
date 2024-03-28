@@ -75,6 +75,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: |
             pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true >> tmp.txt
+          postCommands: |
             cat tmp.txt
 
       # Discordに通知
