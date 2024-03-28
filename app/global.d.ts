@@ -4,6 +4,7 @@ type Head = {
   title?: string
 
   description?: string
+  path?: string
 }
 
 declare module 'hono' {

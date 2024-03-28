@@ -1,7 +1,11 @@
-import type { FC } from 'hono/jsx'
+import { createRoute } from 'honox/factory'
 
-const route: FC = () => <div>testdir1</div>
+export default createRoute(({ render, req: { path } }) =>
+  render(
+    <div>
+      <h1>Hello!!</h1>
+    </div>,
 
-export default route
-
-export const title = 'テストのページ'
+    { path },
+  ),
+)
