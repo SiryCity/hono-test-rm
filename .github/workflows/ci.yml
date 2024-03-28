@@ -8,6 +8,13 @@ on:
 jobs:
   main:
     runs-on: ubuntu-22.04
+
+    env:
+      IS_TEST: ${{ startsWith(github.ref, 'refs/pull') }}
+      IS_STG: ${{ startsWith(github.ref, 'refs/heads/main') }}
+      IS_PROD: ${{ startsWith(github.ref, 'refs/tags/v') }}
+      DISCORD_INCOMING_WEBHOOK: ${{ secrets.DISCORD_INCOMING_WEBHOOK }}
+
     steps:
       # 標準機能
       - uses: actions/checkout@v4
@@ -33,9 +40,23 @@ jobs:
       # 環境変数の設定
       - name: Set env
         run: |
-          echo FOO=${{ secrets.FOO }} >> .env.toml
-          echo BAR=${{ secrets.BAR }} >> .env.toml
           echo URL_PROD=\"${{ secrets.URL_PROD }}\" >> .env.toml
+          echo "URL_ORIGIN=${{ secrets.URL_PROD }}" >> $GITHUB_ENV
+      - name: Set TEST env
+        if: env.IS_TEST == 'true'
+        run: |
+          echo ENVIRONMENT=TEST >> .env.toml
+          echo "DISCORD_PREFIX=🧪 Updated TEST env: " >> $GITHUB_ENV
+      - name: Set STG env
+        if: env.IS_STG == 'true'
+        run: |
+          echo ENVIRONMENT=STG >> .env.toml
+          echo "DISCORD_PREFIX=🌏 Updated STG env: " >> $GITHUB_ENV
+      - name: Set PROD env
+        if: env.IS_PROD == 'true'
+        run: |
+          echo ENVIRONMENT=PROD >> .env.toml
+          echo "DISCORD_PREFIX=🚀 Released PROD env: " >> $GITHUB_ENV
 
       # ビルド
       # ビルド直前にライブラリの直接上書きによるOGPの設定変更
@@ -52,3 +73,15 @@ jobs:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: pages deploy ./dist --env=preview
+
+      # Discordに通知
+      - name: Notify Discord
+        run: |
+          curl -H 'Content-Type:application/json' -d "{\"content\": \"$DISCORD_PREFIX $URL_ORIGIN\"}" $DISCORD_INCOMING_WEBHOOK
+
+      # 自動リリース
+      - uses: 'marvinpinto/action-automatic-releases@latest'
+        if: env.IS_PROD == 'true'
+        with:
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          prerelease: false
