@@ -6,6 +6,6 @@ export default createRoute(({ render, req: { path } }) =>
       <h1>Hello!!</h1>
     </div>,
 
-    { path },
+    { path, title: 'テストページ' },
   ),
 )

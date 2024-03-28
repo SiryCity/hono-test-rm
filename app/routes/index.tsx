@@ -1,13 +1,11 @@
-import type { FC } from 'hono/jsx'
+import { createRoute } from 'honox/factory'
 import env from '~/../.env.toml'
 import { SITE_TITLE } from '~/constants/seo'
 import testImg from '~/images/ogp.jpg'
 import { Counter } from '~/islands/counter'
 
-const route: FC = ({ req }) => {
-  console.log(req.path)
-
-  return (
+export default createRoute(({ render, req: { path } }) =>
+  render(
     <div>
       <h1 class="text-red-600">Hello, Honox!!preview</h1>
       <Counter />
@@ -20,10 +18,7 @@ const route: FC = ({ req }) => {
         /test
       </a>
       <img src="./ogp.jpg" alt="" />
-    </div>
-  )
-}
-
-export default route
-
-export const title = SITE_TITLE
+    </div>,
+    { path, title: SITE_TITLE },
+  ),
+)
