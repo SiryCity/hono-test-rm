@@ -74,9 +74,12 @@ jobs:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: |
-            pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true >> tmp.txt
-          postCommands: |
-            cat tmp.txt
+            pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true
+
+      - name: print wrangler command output
+        env:
+          CMD_OUTPUT: ${{ steps.deploy.outputs.command-output }}
+        run: echo $CMD_OUTPUT
 
       # Discordに通知
       - name: Notify Discord
