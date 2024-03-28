@@ -45,17 +45,17 @@ jobs:
       - name: Set TEST env
         if: env.IS_TEST == 'true'
         run: |
-          echo ENVIRONMENT=TEST >> .env.toml
+          echo ENVIRONMENT="TEST" >> .env.toml
           echo "DISCORD_PREFIX=🧪 Updated TEST env: " >> $GITHUB_ENV
       - name: Set STG env
         if: env.IS_STG == 'true'
         run: |
-          echo ENVIRONMENT=STG >> .env.toml
+          echo ENVIRONMENT="STG" >> .env.toml
           echo "DISCORD_PREFIX=🌏 Updated STG env: " >> $GITHUB_ENV
       - name: Set PROD env
         if: env.IS_PROD == 'true'
         run: |
-          echo ENVIRONMENT=PROD >> .env.toml
+          echo ENVIRONMENT="PROD" >> .env.toml
           echo "DISCORD_PREFIX=🚀 Released PROD env: " >> $GITHUB_ENV
 
       # ビルド
