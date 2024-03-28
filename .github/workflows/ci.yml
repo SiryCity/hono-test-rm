@@ -74,7 +74,7 @@ jobs:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: |
-            pages deploy ./dist --project-name="hono-test-rm" --branch=\"${{ GITHUB_HEAD_REF }}\"
+            pages deploy ./dist --project-name="hono-test-rm" --branch=\"${{ github.head_ref }}\"
 
       # Discordに通知
       - name: Notify Discord
