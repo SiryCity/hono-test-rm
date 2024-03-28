@@ -74,8 +74,8 @@ jobs:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: |
-            pages deploy ./dist --branch="${{ github.head_ref }}"
-            pages deployment tail --environment
+            pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true
+            pages deployment list
 
       # Discordに通知
       - name: Notify Discord
