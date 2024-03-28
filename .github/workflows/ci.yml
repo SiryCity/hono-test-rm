@@ -75,15 +75,12 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true
 
-      - name: print deployment-url
-        env:
-          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
-        run: echo $DEPLOYMENT_URL
-
       # Discordに通知
       - name: Notify Discord
         run: |
-          curl -H 'Content-Type:application/json' -d "{\"content\": \"$DISCORD_PREFIX $URL_ORIGIN\"}" $DISCORD_INCOMING_WEBHOOK
+          curl -H 'Content-Type:application/json' -d "{\"content\": \"$DISCORD_PREFIX $DEPLOYMENT_URL\"}" $DISCORD_INCOMING_WEBHOOK
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
 
       # 自動リリース
       - uses: 'marvinpinto/action-automatic-releases@latest'
