@@ -1,0 +1,8 @@
+export const SITE_TITLE = 'Honoxのテスト'
+export const SITE_DESCRIPTION = 'Honoxのテストです。'
+export const SITE_POSTFIX = ' - トップページ'
+export const DEFAULT_OGP_IMG = 'opengraph-image.jpg'
+export const PIPE = ' | '
+export const TWITTER_ID = '@sirycity'
+export const FACEBOOK_ID = '3333684683327535'
+export const FACEBOOK_URL = 'https://www.facebook.com/sirycity'

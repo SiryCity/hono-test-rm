@@ -1,5 +1,6 @@
 import type { FC } from 'hono/jsx'
 import env from '~/../.env.toml'
+import { SITE_TITLE } from '~/constants/seo'
 import testImg from '~/images/ogp.jpg'
 import { Counter } from '~/islands/counter'
 
@@ -21,4 +22,4 @@ const route: FC = () => (
 
 export default route
 
-export const title = 'Honox'
+export const title = SITE_TITLE
