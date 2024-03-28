@@ -83,6 +83,14 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true
+      # デプロイ
+      - name: Deploy PROD
+        if: env.IS_PROD == 'true'
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true
 
       # Discordに通知
       - name: Notify Discord
