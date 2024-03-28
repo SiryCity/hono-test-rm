@@ -74,7 +74,7 @@ jobs:
         with:
           packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy ./dist --env=preview
+          command: pages deploy ./dist --dispatch-namespace="test1"
 
       # Discordに通知
       - name: Notify Discord
