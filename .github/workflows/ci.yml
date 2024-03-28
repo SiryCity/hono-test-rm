@@ -62,7 +62,6 @@ jobs:
       # ビルド直前にライブラリの直接上書きによるOGPの設定変更
       - name: Build
         run: |
-          cat .env.toml
           sed -i '32a worker.get("/opengraph-image.jpg",serveStatic())' node_modules/@hono/vite-cloudflare-pages/dist/entry.js
           sed -i '32a worker.get("/favicon.svg",serveStatic())' node_modules/@hono/vite-cloudflare-pages/dist/entry.js
           sed -i '32a worker.get("/apple-touch-icon.png",serveStatic())' node_modules/@hono/vite-cloudflare-pages/dist/entry.js
@@ -70,16 +69,18 @@ jobs:
 
       # デプロイ
       - name: Deploy
+        id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
-          packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: pages deploy ./dist --env=preview
+          command: pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true
 
       # Discordに通知
       - name: Notify Discord
         run: |
-          curl -H 'Content-Type:application/json' -d "{\"content\": \"$DISCORD_PREFIX $URL_ORIGIN\"}" $DISCORD_INCOMING_WEBHOOK
+          curl -H 'Content-Type:application/json' -d "{\"content\": \"$DISCORD_PREFIX $DEPLOYMENT_URL\"}" $DISCORD_INCOMING_WEBHOOK
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
 
       # 自動リリース
       - uses: 'marvinpinto/action-automatic-releases@latest'
