@@ -8,7 +8,7 @@ export default createRoute(({ render, req: { path } }) =>
   render(
     <div>
       <h1 class="text-red-600">Hello, Honox!!</h1>
-      <div>こいつはプレビュー</div>
+      <div>こいつは{env.ENVIRONMENT}</div>
       <Counter />
       <div class="bg-green-300">{typeof window}</div>
       <div class="bg-pink-300">{String(new Date())}</div>
