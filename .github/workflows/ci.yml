@@ -76,10 +76,10 @@ jobs:
           command: |
             pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true
 
-      - name: print wrangler command output
+      - name: print deployment-url
         env:
-          CMD_OUTPUT: ${{ steps.deploy.outputs.command-output }}
-        run: echo $CMD_OUTPUT
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: echo $DEPLOYMENT_URL
 
       # Discordに通知
       - name: Notify Discord
