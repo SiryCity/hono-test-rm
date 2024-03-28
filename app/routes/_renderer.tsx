@@ -14,7 +14,7 @@ import {
 import styles from '~/style.css?url'
 
 export default jsxRenderer(
-  ({ children, title, description = null, path = null }) => {
+  ({ children, title, description = null, path = '' }) => {
     // 環境
     const ENVIRONMENT = env.ENVIRONMENT
     const URL_PROD = env.URL_PROD

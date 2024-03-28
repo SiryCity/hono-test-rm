@@ -1,11 +1,6 @@
-import { createRoute } from 'honox/factory'
+import type { NotFoundHandler } from 'hono/types'
 
-export default createRoute(({ render, req: { path } }) =>
-  render(
-    <div>
-      <h1>404</h1>
-    </div>,
+const handler: NotFoundHandler = c =>
+  c.render(<h1>404 not found</h1>, { title: 'ページが見つかりません' })
 
-    { path, title: '404' },
-  ),
-)
+export default handler
