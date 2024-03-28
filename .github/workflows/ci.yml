@@ -69,12 +69,11 @@ jobs:
 
       # デプロイ
       - name: Deploy
+        id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
-          packageManager: bun
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./dist --project-name="hono-test-rm" --branch="${{ github.head_ref }}" --commit-dirty=true
+          command: pages deploy ./dist --branch="${{ github.head_ref }}" --commit-dirty=true
 
       - name: print deployment-url
         env:
