@@ -7,7 +7,7 @@ import { Counter } from '~/islands/counter'
 export default createRoute(({ render, req: { path } }) =>
   render(
     <div>
-      <h1 class="text-red-600">Hello, Honox!!!</h1>
+      <h1 class="text-red-600">Hello, Honox!!!!</h1>
       <div>こいつは{env.ENVIRONMENT}</div>
       <Counter />
       <div class="bg-green-300">{typeof window}</div>
