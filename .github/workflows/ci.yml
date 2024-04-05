@@ -40,7 +40,7 @@ jobs:
       - name: Set env
         run: |
           echo URL_PROD=\'${{ secrets.URL_PROD }}\' >> .env.toml
-          echo ENVIRONMENT=\'Preview\' >> .wrangler.toml
+          echo environment=\'Preview\' >> .wrangler.toml
           echo name=\'ci\' >> .wrangler.toml
           echo main=\'\' >> .wrangler.toml
           echo compatibility_date=\'2024-04-01\' >> .wrangler.toml
