@@ -40,11 +40,6 @@ jobs:
       - name: Set env
         run: |
           echo URL_PROD=\'${{ secrets.URL_PROD }}\' >> .env.toml
-          echo environment=\'Preview\' >> .wrangler.toml
-          echo name=\'ci\' >> .wrangler.toml
-          echo main=\'\' >> .wrangler.toml
-          echo compatibility_date=\'2024-04-01\' >> .wrangler.toml
-          git branch
       - name: Set TEST env
         if: env.IS_TEST == 'true'
         run: |
@@ -72,7 +67,8 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./dist --project-name="${{ secrets.CLOUDFLARE_PROJECT_NAME }}" --branch="${{ github.head_ref }}" --commit-dirty=true
+          command: pages deploy ./dist --project-name="${{ secrets.CLOUDFLARE_PROJECT_NAME }}" --commit-dirty=true
+          branch: foo
 
       # Discordに通知
       - name: Notify Discord
